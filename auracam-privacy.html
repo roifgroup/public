@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AuraCam Privacy Policy</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' fill='%23020617'/%3E%3Ccircle cx='54' cy='54' r='24' fill='%23F8FAFC'/%3E%3Ccircle cx='54' cy='54' r='13' fill='%23020617'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #020617;
+    --surface: #0f172a;
+    --border: #1e293b;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  header svg { flex: none; }
+  h1 { font-size: 1.6rem; margin: 0; }
+  .updated { color: var(--muted); font-size: 0.9rem; margin: 0 0 40px; }
+  h2 {
+    font-size: 1.15rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p, li { color: #e2e8f0; }
+  ul { padding-left: 1.2em; }
+  li { margin-bottom: 8px; }
+  a { color: var(--accent); }
+  code {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.9em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { background: var(--surface); color: var(--muted); font-weight: 600; }
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg width="36" height="36" viewBox="0 0 108 108" aria-hidden="true" focusable="false">
+      <rect width="108" height="108" rx="20" fill="#0f172a"/>
+      <circle cx="54" cy="54" r="24" fill="#f8fafc"/>
+      <circle cx="54" cy="54" r="13" fill="#020617"/>
+    </svg>
+    <h1>AuraCam Privacy Policy</h1>
+  </header>
+  <p class="updated">Last updated: September 30, 2026</p>
+
+  <p>
+    AuraCam is a baby-monitor app for Android. It turns your phone into a camera that
+    streams live video and audio directly to a browser on another device connected to the
+    <strong>same local network</strong> (your home WiFi, or the phone's own hotspot) using
+    WebRTC. This policy explains what data AuraCam collects, how it is used, and who it is
+    shared with.
+  </p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Your camera and microphone feed is streamed <strong>directly, peer-to-peer, over your local network</strong> to the browser(s) you connect. It does not pass through AuraCam's developer or any server the developer operates.</li>
+    <li>AuraCam has no user accounts, no advertising, and does not sell or share your data with advertisers or data brokers.</li>
+    <li>If you turn on optional cloud recording, video is uploaded to a storage bucket <strong>you configure and control</strong> (e.g. your own Cloudflare R2, AWS S3, or similar account) — not to a server operated by AuraCam's developer.</li>
+    <li>If you leave optional diagnostics on, crash reports and error logs are sent to Sentry, a third-party crash-reporting service, to help fix bugs. Video, audio, your pairing PIN, and cloud storage credentials are never included.</li>
+  </ul>
+
+  <h2>Camera, microphone, and live video/audio</h2>
+  <p>
+    AuraCam requests camera and microphone access to capture the live stream. This
+    audio/video is sent using WebRTC directly to whichever browser(s) you deliberately
+    connect on your local network, protected by a 6-digit pairing PIN and an
+    HTTPS/WSS-encrypted connection. It is not uploaded to, or stored by, any server operated
+    by AuraCam's developer, and the developer has no access to it. Talk-back audio you speak
+    into a connected browser is likewise sent directly to the phone for local playback only.
+  </p>
+
+  <h2>Recording</h2>
+  <table>
+    <tr><th>Mode</th><th>What happens to the data</th></tr>
+    <tr>
+      <td>Local recording (optional)</td>
+      <td>Video is written to a rolling buffer in the app's private storage on your own phone. It is only ever transferred off the phone when you tap "Download" in a connected browser, at which point it goes directly to that device, and nowhere else.</td>
+    </tr>
+    <tr>
+      <td>Cloud recording (optional)</td>
+      <td>Video segments are uploaded directly from your phone to an S3-compatible storage bucket you set up and provide credentials for (Cloudflare R2, AWS S3, Backblaze B2, Wasabi, DigitalOcean Spaces, or a self-hosted endpoint). This is <strong>your own storage account</strong>, governed by that provider's own privacy policy and your own access controls — AuraCam's developer has no access to it. Your access-key credentials are encrypted on-device (Android Keystore) and are never transmitted anywhere except directly to the storage provider you chose, as part of the upload itself.</td>
+    </tr>
+  </table>
+
+  <h2>Diagnostics (optional, on by default, can be turned off in Settings)</h2>
+  <p>
+    AuraCam can send crash reports and error-level logs to <a href="https://sentry.io" target="_blank" rel="noopener">Sentry</a>,
+    a third-party crash-reporting service, to help the developer find and fix bugs. When enabled, this may include:
+  </p>
+  <ul>
+    <li>Automatic crash/error reports (stack traces, the app version, and a curated set of internal error messages).</li>
+    <li>Basic device information: manufacturer, model, Android version, and app version.</li>
+    <li>If a stream happens to be running: non-identifying settings state such as selected video quality, frame rate, night mode, zoom level, and motion-detection sensitivity.</li>
+    <li>If you use the in-app "Report a bug" feature: the description you type, plus the device/settings information above.</li>
+  </ul>
+  <p>
+    Diagnostics data is filtered to exclude your pairing PIN, cloud storage credentials, and
+    any video or audio content. This filtering happens automatically before anything is sent,
+    including text you type into "Report a bug." Diagnostics can be turned off at any time in
+    Settings, with no impact on the app's core functionality.
+  </p>
+
+  <h2>Permissions AuraCam requests, and why</h2>
+  <ul>
+    <li><strong>Camera / Microphone</strong> — to capture the live stream and enable talk-back audio.</li>
+    <li><strong>Notifications</strong> — used only if you enable motion-detection alerts.</li>
+    <li><strong>WiFi / network state</strong> — used to determine your phone's local network address so it can be reached by a browser, and to detect whether the phone is on a metered (e.g. cellular hotspot) connection before allowing cloud uploads.</li>
+    <li><strong>Local network access</strong> — AuraCam's core function is hosting a local web server that browsers on the same network connect to.</li>
+  </ul>
+  <p>None of the above is used to identify you personally, build an advertising profile, or track you across other apps or websites.</p>
+
+  <h2>What AuraCam does not do</h2>
+  <ul>
+    <li>No user accounts, sign-in, or personal profile.</li>
+    <li>No advertising, ad SDKs, or advertising identifiers.</li>
+    <li>No sale or sharing of your data with advertisers or data brokers.</li>
+    <li>No location tracking.</li>
+    <li>No server operated by the developer that your video, audio, or recordings pass through.</li>
+  </ul>
+
+  <h2>Children's privacy</h2>
+  <p>
+    AuraCam is a tool operated by a parent or caregiver to monitor their own household; it is
+    not directed at children, and it is not intended to be used directly by a child. The app
+    does not knowingly collect personal information from children.
+  </p>
+
+  <h2>Data retention and your choices</h2>
+  <ul>
+    <li>Live video/audio is not stored anywhere by the app itself — it exists only for the duration of an active stream.</li>
+    <li>Local recordings are automatically overwritten as the rolling buffer fills, or you can uninstall the app to remove them immediately.</li>
+    <li>Cloud recordings are retained according to your own storage provider account and settings — you control deletion there.</li>
+    <li>You can turn off Diagnostics at any time in Settings; future events stop immediately. Existing events already sent are retained by Sentry per its own data-retention policy.</li>
+  </ul>
+
+  <h2>Security</h2>
+  <p>
+    The local connection between your phone and a viewer's browser is encrypted (HTTPS/WSS)
+    and protected by a PIN you control. Cloud storage credentials are encrypted at rest on
+    your device. Because AuraCam is designed to work entirely on your local network, video
+    and audio never need to leave it unless you explicitly opt into cloud recording.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, the updated version will be posted at this same URL with a
+    revised "Last updated" date above.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy or your data can be sent to
+    <a href="mailto:auracam-info@roifgroup.com">auracam-info@roifgroup.com</a>.
+  </p>
+
+  <footer>AuraCam &middot; RoifGroup</footer>
+</main>
+</body>
+</html>
